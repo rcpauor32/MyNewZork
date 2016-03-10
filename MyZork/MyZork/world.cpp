@@ -1,6 +1,7 @@
 #include "world.h"
 #include "rooms.h"
 #include "globals.h"
+#include "player.h"
 
 void CreateWorld(Rooms room[NUM_ROOM]) {
 	room[Secret].name = "Secret Room";
@@ -30,5 +31,7 @@ void CreateWorld(Rooms room[NUM_ROOM]) {
 	for (int n_room = 0; n_room < NUM_ROOM; n_room++) {
 		room[n_room].room_num = n_room;
 	}
+
+	player.current_room = Surgery;
 
 }
