@@ -2,7 +2,7 @@
 #include "rooms.h"
 #include "globals.h"
 
-void CreateWorld(Rooms room[NUM_ROOM], Exits exit[NUM_EXITS]) {
+void CreateWorld(Rooms room[NUM_ROOM], Links exit[NUM_EXITS]) {
 	room[Secret].name = "Secret Room";
 	room[Surgery].name = "Surgery"; 
 	room[UpAngel].name = "Upstairs Angel Room";
@@ -31,6 +31,16 @@ void CreateWorld(Rooms room[NUM_ROOM], Exits exit[NUM_EXITS]) {
 		room[n_room].room_num = n_room;
 	}
 
+	exit[SectoSur].CreateLinks(Secret, "south", Surgery, "north");
+	exit[SurtoUpA].CreateLinks(Surgery, "south", UpAngel, "north");
+	exit[UpAtoStu].CreateLinks(UpAngel, "west", Studio, "east");
+	exit[UpAtoDwA].CreateLinks(UpAngel, "down", DwAngel, "up");
+	exit[DwAtoSto].CreateLinks(DwAngel, "west", Stone, "east");
+	exit[DwAtoWai].CreateLinks(DwAngel, "south", Waiting, "north");
+	exit[DwAtoLib].CreateLinks(DwAngel, "east", Library, "west");
+	exit[StotoMir].CreateLinks(Stone, "south", Mirror, "north");
+	exit[WaitoRec].CreateLinks(Waiting, "south",Reception, "north");
+	exit[LibtoDar].CreateLinks(Library, "south", Dark, "north");
 
 }
 
