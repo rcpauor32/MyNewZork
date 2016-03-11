@@ -12,6 +12,9 @@ int main() {
 
 	printf("  - %s\n\n %s", My_World.room[player.current_room].name, My_World.room[player.current_room].description);
 
+	scanf_s("%s", &player.input);
+
+
 	getchar();
 	return 0;
 }

@@ -15,5 +15,9 @@ public:
 
 void CreateWorld(Rooms room[NUM_ROOM], Links exit[NUM_EXITS]);
 
+int GetNumArgs(char* string);
+
+char* GetArgs(char* string, int n_string);
+
 
 #endif

@@ -44,6 +44,43 @@ void CreateWorld(Rooms room[NUM_ROOM], Links exit[NUM_EXITS]) {
 
 }
 
+int GetNumArgs(char* string) {
+	int n_args = 1;
+
+	while (string) {
+		if (*string == ' ') {
+			n_args++;
+		}
+		string++;
+	}
+
+	return n_args;
+}
+
+char* GetArgs(char* string, int n_string) {
+	int n_arg = 1;
+	char* Arg;
+	int Arg_size = sizeof(Arg);
+
+	while (string) {
+		if (*string == ' ')
+			n_arg++;
+		if (n_arg == n_string) {
+			while (*string != ' ' || string){
+				*Arg = *string;
+				Arg++;
+				string++;
+			}
+		}
+
+		string++;
+	}
+
+	Arg -= Arg_size;
+
+	return Arg;
+}
+
 World::~World() {
 	delete room;
 	delete exit;

@@ -4,6 +4,7 @@
 class Players {
 public:
 	int current_room = Surgery;
+	char* input;
 
 }player;
 
