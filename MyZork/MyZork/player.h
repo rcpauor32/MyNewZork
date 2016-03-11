@@ -4,8 +4,9 @@
 class Players {
 public:
 	int current_room = Surgery;
-	char* input;
 
-}player;
+};
+
+int Go(int &current_room, char* player_direction, Links exit[NUM_EXITS]);
 
 #endif
