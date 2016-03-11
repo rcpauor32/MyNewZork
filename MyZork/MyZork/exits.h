@@ -1,11 +1,12 @@
 #ifndef _EXITS_H_
 #define _EXITS_H_
 
-struct Exits {
-	const int previous_room;
-	const int next_room;
-	const char* dir_proom;
-	const char* dir_nroom;
+class Exits {
+public:
+	int previous_room;
+	int next_room;
+	char* dir_proom;
+	char* dir_nroom;
 };
 
 #endif

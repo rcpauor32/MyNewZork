@@ -2,7 +2,7 @@
 #include "rooms.h"
 #include "globals.h"
 
-void CreateWorld(Rooms room[NUM_ROOM]) {
+void CreateWorld(Rooms room[NUM_ROOM], Exits exit[NUM_EXITS]) {
 	room[Secret].name = "Secret Room";
 	room[Surgery].name = "Surgery"; 
 	room[UpAngel].name = "Upstairs Angel Room";
@@ -31,4 +31,10 @@ void CreateWorld(Rooms room[NUM_ROOM]) {
 		room[n_room].room_num = n_room;
 	}
 
+
+}
+
+World::~World() {
+	delete room;
+	delete exit;
 }

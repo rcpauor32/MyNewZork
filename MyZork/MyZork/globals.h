@@ -2,6 +2,7 @@
 #define _GLOBALS_H_
 
 #define NUM_ROOM 11
+#define NUM_EXITS 10
 
 enum room_name {
 	Secret,
@@ -15,6 +16,19 @@ enum room_name {
 	Reception,
 	Library,
 	Dark
+};
+
+enum exit_name {
+	SectoSur,
+	SurtoUpA,
+	UpAtoStu,
+	UpAtoDwA,
+	DwAtoSto,
+	DwAtoWai,
+	DwAtoLib,
+	StotoMir,
+	WaitoRec,
+	LibtoDar
 };
 
 #endif

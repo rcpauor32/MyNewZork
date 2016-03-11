@@ -8,9 +8,9 @@
 int main() {
 	World My_World;
 
-	CreateWorld(My_World.room);
+	CreateWorld(My_World.room, My_World.exit);
 
-	printf("  - %s\n%s", My_World.room[player.current_room].name, My_World.room[player.current_room].description);
+	printf("  - %s\n\n %s", My_World.room[player.current_room].name, My_World.room[player.current_room].description);
 
 	getchar();
 	return 0;

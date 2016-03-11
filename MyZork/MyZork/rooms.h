@@ -3,11 +3,11 @@
 
 #include "exits.h"
 
-struct Rooms {
+class Rooms {
+public:
 	int room_num;
 	char* name;
 	char* description;
-	//Exits exit;
 };
 
 #endif

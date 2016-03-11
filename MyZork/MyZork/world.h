@@ -5,11 +5,15 @@
 #include "rooms.h"
 #include "globals.h"
 
-struct World {
-	Rooms room[NUM_ROOM];
+class World {
+public:
+	Rooms* room = new Rooms[NUM_ROOM];
+	Exits* exit = new Exits[NUM_EXITS];
 
+	~World();
 };
 
-void CreateWorld(Rooms room[NUM_ROOM]);
+void CreateWorld(Rooms room[NUM_ROOM], Exits exit[NUM_EXITS]);
+
 
 #endif
