@@ -3,36 +3,19 @@
 #include "globals.h"
 #include <string.h>
 #include <stdio.h>
-#include <stdlib.h>
 
-void CreateWorld(Rooms room[NUM_ROOM], Links exit[NUM_EXITS]) {
-	room[Secret].name = "Secret Room";
-	room[Surgery].name = "Surgery"; 
-	room[UpAngel].name = "Upstairs Angel Room";
-	room[DwAngel].name = "Downstairs Angel Room";
-	room[Studio].name = "Studio";
-	room[Stone].name = "Stone Room";
-	room[Mirror].name = "Mirror Room";
-	room[Waiting].name = "Waiting Room";
-	room[Reception].name = "Reception";
-	room[Library].name = "Library";
-	room[Dark].name = "Dark Room";
-
-	room[Secret].description = "secretdescription";
-	room[Surgery].description = "surgerydesc";
-	room[UpAngel].description = "upangeldesc";
-	room[DwAngel].description = "downangeldesc";
-	room[Studio].description = "studiodesc";
-	room[Stone].description = "stonedesc";
-	room[Mirror].description = "mirrordesc";
-	room[Waiting].description = "waitingdesc";
-	room[Reception].description = "receptiondesc";
-	room[Library].description = "librarydesc";
-	room[Dark].description = "darkdesc";
-
-	for (int n_room = 0; n_room < NUM_ROOM; n_room++) {
-		room[n_room].room_num = n_room;
-	}
+void CreateWorld(Rooms room[NUM_ROOM], Links exit[NUM_EXITS], Players player) {
+	room[Secret].CreateRooms("Secret Room", "Secret description");
+	room[Surgery].CreateRooms("Surgery Room", "Surgery description");
+	room[UpAngel].CreateRooms("Upstairs Angel Room", "UpA desc");
+	room[DwAngel].CreateRooms("Downstairs Angel Room", "DwA desc");
+	room[Studio].CreateRooms("Studio", "Studio desc");
+	room[Stone].CreateRooms("Stone Room", "Stone desc");
+	room[Mirror].CreateRooms("Mirror Room", "Mirror desc");
+	room[Waiting].CreateRooms("Waiting Room", "Waiting desc");
+	room[Reception].CreateRooms("Reception", "Reception desc");
+	room[Library].CreateRooms("Library", "Library desc");
+	room[Dark].CreateRooms("Dark Room", "Dark desc");
 
 	exit[SectoSur].CreateLinks(Secret, "south", Surgery, "north");
 	exit[SurtoUpA].CreateLinks(Surgery, "south", UpAngel, "north");
@@ -45,48 +28,88 @@ void CreateWorld(Rooms room[NUM_ROOM], Links exit[NUM_EXITS]) {
 	exit[WaitoRec].CreateLinks(Waiting, "south",Reception, "north");
 	exit[LibtoDar].CreateLinks(Library, "south", Dark, "north");
 
+	player.Init_player(Surgery);
+
 }
 
 bool Play(Links exit[NUM_EXITS], Players player) {
 	char input[20];
-	char dir_input[20];
+	char second_input[20];
 	printf("Action:\n\n--> ");
 	fgets(input, 20, stdin);
 	if ((strcmp(input, "quit\n") == 0) || strcmp(input, "q\n") == 0)
 		return false;
-	else
-		if (strcmp(input, "go\n") == 0) {
-			printf("\n\nWhere?\n--> ");
-			fgets(dir_input, 20, stdin);
-			if (!strcmp(dir_input, "north\n") || !strcmp(dir_input, "n\n")) {
-				if (!Go(player.current_room, "north", exit))
-					printf("\n\nYou just smashed your head against the wall!");
-			}
-			else if (!strcmp(dir_input, "south\n") || !strcmp(dir_input, "s\n")) {
-				if (!Go(player.current_room, "south", exit))
-					printf("\n\nYou just smashed your head against the wall!");
-			}
-			else if (!strcmp(dir_input, "west\n") || !strcmp(dir_input, "w\n")) {
-				if (!Go(player.current_room, "west", exit))
-					printf("\n\nYou just smashed your head against the wall!");
-			}
-			else if (!strcmp(dir_input, "east\n") || !strcmp(dir_input, "e\n")) {
-				if (!Go(player.current_room, "east", exit))
-					printf("\n\nYou just smashed your head against the wall!");
-			}
-			else if (!strcmp(dir_input, "up\n") || !strcmp(dir_input, "u\n")) {
-				if (!Go(player.current_room, "up", exit))
-					printf("\n\nYou just smashed your head against the ceiling!");
-			}
-			else if (!strcmp(dir_input, "down\n") || !strcmp(dir_input, "d\n")) {
-				if (!Go(player.current_room, "down", exit))
-					printf("\n\nYou just smashed your head against the floor!");
-			}
-			else
-				printf("I do not recognize that direction");
+	else {
+		if (!strcmp(input, "north\n") || !strcmp(input, "n\n")) {
+			Go(player.current_room, "north", exit);
+		}
+		else if (!strcmp(input, "south\n") || !strcmp(input, "s\n")) {
+			Go(player.current_room, "south", exit);
+		}
+		else if (!strcmp(input, "west\n") || !strcmp(input, "w\n")) {
+			Go(player.current_room, "west", exit);
+		}
+		else if (!strcmp(input, "east\n") || !strcmp(input, "e\n")) {
+			Go(player.current_room, "east", exit);
+		}
+		else if (!strcmp(input, "up\n") || !strcmp(input, "u\n")) {
+			Go(player.current_room, "up", exit);
+		}
+		else if (!strcmp(input, "down\n") || !strcmp(input, "d\n")) {
+			Go(player.current_room, "down", exit);
 		}
 		else
-			printf("I do not recognize that action");
+			if (strcmp(input, "go\n") == 0) {
+				printf("\nWhere?\n\n--> ");
+				fgets(second_input, 20, stdin);
+				if (!strcmp(second_input, "north\n") || !strcmp(second_input, "n\n")) {
+					Go(player.current_room, "north", exit);
+				}
+				else if (!strcmp(second_input, "south\n") || !strcmp(second_input, "s\n")) {
+					Go(player.current_room, "south", exit);
+				}
+				else if (!strcmp(second_input, "west\n") || !strcmp(second_input, "w\n")) {
+					Go(player.current_room, "west", exit);
+				}
+				else if (!strcmp(second_input, "east\n") || !strcmp(second_input, "e\n")) {
+					Go(player.current_room, "east", exit);
+				}
+				else if (!strcmp(second_input, "up\n") || !strcmp(second_input, "u\n")) {
+					Go(player.current_room, "up", exit);
+				}
+				else if (!strcmp(second_input, "down\n") || !strcmp(second_input, "d\n")) {
+					Go(player.current_room, "down", exit);
+				}
+				else{
+					printf("I do not recognize that direction");
+					getchar();
+				}
+			}
+			else 
+				if (!strcmp(input, "open door\n")) {
+					if (exit[player.current_room].open) {
+						printf("\nThe door was already open\n");
+					}
+					else {
+						printf("\nYou opened the door\n");
+						exit[player.current_room].open = false;
+					}
+				}
+				else
+					if (!strcmp(input, "close door\n")) {
+						if (exit[player.current_room].open) {
+							printf("\nThe door was already open\n");
+						}
+						else {
+							printf("\nYou opened the door\n");
+							exit[player.current_room].open = false;
+						}
+					}
+			else {
+				printf("I do not recognize that action");
+				getchar();
+			}
+	}
 
 	return true;
 }
@@ -96,8 +119,7 @@ World::~World() {
 	delete exit;
 }
 
-void Look(World My_World) {
-	system("CLS");
-	printf("  - %s\n\n %s\n\n", My_World.room[My_World.player.current_room].name, My_World.room[My_World.player.current_room].description);
+void Look(Rooms* room, Players player) {
+	printf("  - %s\n\n %s\n\n", room[player.current_room].name, room[player.current_room].description);
 
 }

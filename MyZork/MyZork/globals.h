@@ -31,4 +31,13 @@ enum exit_name {
 	LibtoDar
 };
 
+enum directions {
+	north,
+	south,
+	west,
+	east,
+	up,
+	down
+};
+
 #endif

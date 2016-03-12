@@ -18,9 +18,9 @@ public:
 	~World();
 };
 
-void CreateWorld(Rooms room[NUM_ROOM], Links exit[NUM_EXITS]);
+void CreateWorld(Rooms room[NUM_ROOM], Links exit[NUM_EXITS], Players player);
 
 bool Play(Links exit[NUM_EXITS], Players player);
-void Look(World My_World);
+void Look(Rooms* room, Players player);
 
 #endif

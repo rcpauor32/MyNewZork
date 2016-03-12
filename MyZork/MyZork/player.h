@@ -5,8 +5,12 @@ class Players {
 public:
 	int current_room = Surgery;
 
+	void Init_player(int starting_room){
+		current_room = starting_room;
+	}
+
 };
 
-int Go(int &current_room, char* player_direction, Links exit[NUM_EXITS]);
+void Go(int &current_room, char* player_direction, Links* exit);
 
 #endif

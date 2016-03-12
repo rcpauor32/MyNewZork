@@ -3,9 +3,13 @@
 
 class Rooms {
 public:
-	int room_num;
 	char* name;
 	char* description;
+
+	void CreateRooms(char* title, char* desc) {
+		name = title;
+		description = desc;
+	}
 };
 
 #endif

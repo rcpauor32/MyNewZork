@@ -7,6 +7,7 @@ public:
 	int next_room;
 	char* dir_proom;
 	char* dir_nroom;
+	bool open = 1;
 
 	void CreateLinks(int room1, char* dir1, int room2, char* dir2){
 		previous_room = room1;
