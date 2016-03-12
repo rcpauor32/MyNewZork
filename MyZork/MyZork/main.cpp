@@ -8,10 +8,9 @@ int main() {
 
 	CreateWorld(My_World.room, My_World.exit, My_World.player);
 
-	do{
-		system("CLS");
-		Look(My_World.room, My_World.player);
-	} while (Play(My_World.exit, My_World.player));
+	Look(My_World.room, My_World.player);
+
+	while (Play(My_World.exit, My_World.player));
 
 	printf("\nThanks for Playing :D");
 

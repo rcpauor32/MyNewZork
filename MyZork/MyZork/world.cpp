@@ -58,7 +58,7 @@ bool Play(Links exit[NUM_EXITS], Players player) {
 		else if (!strcmp(input, "down\n") || !strcmp(input, "d\n")) {
 			Go(player.current_room, "down", exit);
 		}
-		else
+		else  
 			if (strcmp(input, "go\n") == 0) {
 				printf("\nWhere?\n\n--> ");
 				fgets(second_input, 20, stdin);
@@ -85,26 +85,58 @@ bool Play(Links exit[NUM_EXITS], Players player) {
 					getchar();
 				}
 			}
-			else 
+			else
 				if (!strcmp(input, "open door\n")) {
 					if (exit[player.current_room].open) {
 						printf("\nThe door was already open\n");
 					}
 					else {
 						printf("\nYou opened the door\n");
-						exit[player.current_room].open = false;
+						exit[player.current_room].open = true;
 					}
 				}
 				else
 					if (!strcmp(input, "close door\n")) {
-						if (exit[player.current_room].open) {
-							printf("\nThe door was already open\n");
+						if (!exit[player.current_room].open) {
+							printf("\nThe door was already closed\n");
 						}
 						else {
-							printf("\nYou opened the door\n");
+							printf("\nYou closed the door\n");
 							exit[player.current_room].open = false;
 						}
 					}
+					else
+						if (!strcmp(input, "open\n")) {
+							printf("\nWhat:\n\n--> ");
+							fgets(second_input, 20, stdin);
+							if (!strcmp(second_input, "door\n")){
+								if (exit[player.current_room].open) {
+									printf("\nThe door was already open\n");
+								}
+								else {
+									printf("\nYou opened the door\n");
+									exit[player.current_room].open = true;
+								}
+							}
+						}
+						else
+							if (!strcmp(input, "close\n")) {
+								printf("\nWhat:\n\n--> ");
+								fgets(second_input, 20, stdin);
+								if (!strcmp(second_input, "door\n")){
+									if (!exit[player.current_room].open) {
+										printf("\nThe door was already closed\n");
+									}
+									else {
+										printf("\nYou closed the door\n");
+										exit[player.current_room].open = true;
+								
+									}
+								}
+								else
+									printf("I don't know that object.\n");
+							}
+							
 			else {
 				printf("I do not recognize that action");
 				getchar();
