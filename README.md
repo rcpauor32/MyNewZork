@@ -14,6 +14,6 @@ In this prototype you can:
 
   QUIT -->
 	- 'quit' or 'q'
-	
-Author --> Pau Olivé Rubio.
+	  
+Author --> Pau Olivé Rubio.  
 Github Repository --> https://github.com/rcpauor32/MyNewZork/
