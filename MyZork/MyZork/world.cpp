@@ -5,28 +5,28 @@
 #include <stdio.h>
 
 void CreateWorld(Rooms room[NUM_ROOM], Links exit[NUM_EXITS]) {
-	room[Secret].CreateRooms("Secret Room", "Secret description");
-	room[Surgery].CreateRooms("Surgery Room", "You just see a surgery bed in the center of the room.\nAll the walls of this octogonal room seem really old, dark and burned.\nThere's a big CLOSED door on the SOUTH wall. \nAlso, you see a crack on the NORTH wall big enough to fit in.\n");
-	room[UpAngel].CreateRooms("Upstairs Angel Room", "UpA desc");
-	room[DwAngel].CreateRooms("Downstairs Angel Room", "DwA desc");
-	room[Studio].CreateRooms("Studio", "Studio desc");
-	room[Stone].CreateRooms("Stone Room", "Stone desc");
-	room[Mirror].CreateRooms("Mirror Room", "Mirror desc");
-	room[Waiting].CreateRooms("Waiting Room", "Waiting desc");
-	room[Reception].CreateRooms("Reception", "Reception desc");
-	room[Library].CreateRooms("Library", "Library desc");
-	room[Dark].CreateRooms("Dark Room", "Dark desc");
+	room[Secret].CreateRooms("Secret Room", "This is a dark room only lighted up by the fading light of your torch.\n After a moment you realize there is a man-like hooded figure standing in a corner.\n He doesn't seem to have noticed you yet.\n The only visible door is to the SOUTH.\n");
+	room[Surgery].CreateRooms("Surgery Room", "You just see a surgery bed in the center of the room.\n All the walls of this octogonal room seem really old, dark and burned.\n There's a big CLOSED door on the SOUTH wall. \n Also, you see a crack on the NORTH wall big enough to fit in.\n");
+	room[UpAngel].CreateRooms("Upstairs Angel Room", "You are in a 'doughnut' shaped room.\n To the WEST there's a door with a sign that reads 'Studio' and a Surgery room-like door at the NORTH.\n You look downwards through the centric hole. There's a human like statute of an angel.\n Seems like you could go DOWN through the stairs that are at your right and left.\n");
+	room[DwAngel].CreateRooms("Downstairs Angel Room", "You've reached the angel at the center of the room.\n From here you realize it has no head and this makes it a lot creepier.\n You are in a round room with doors to the WEST, SOUTH and EAST and stairs to go UP.\ Maybe you should investigate.\n");
+	room[Studio].CreateRooms("Studio", "You are in a little room with just a fading light on a desk full of drawers.\n On the EAST wall there's a door.\n");
+	room[Stone].CreateRooms("Stone Room", "This room is all made of living stone.\n You realize that in a corner there's a woman like statue which is hidding her face behinf her hands.\n There's a cristal door to the SOUTH and a wooden door on the EAST wall.\n");
+	room[Mirror].CreateRooms("Mirror Room", "The room walls are literally made of mirrors that can reflect everything in the room.\n The only exit you can see is to the NORTH.\n");
+	room[Waiting].CreateRooms("Waiting Room", "This is a plain but creepily empty waiting room from a very old hospital.\n There is an exit to the SOUTH and another to the NORTH");
+	room[Reception].CreateRooms("Reception", "You came up in a reception from a hospital.\n There is a big white door with a sign on top that read 'EXIT' but it seems to be completly jammed.\n The only viable door on the room is to the NORTH.\n");
+	room[Library].CreateRooms("Library", "You are in a huge Library plenty of old books.\n There's a table with a kid notebook and an old newspaper.\n You see a door in a dark corner to the SOUTH and a wooden door the WEST.\n");
+	room[Dark].CreateRooms("Dark Room", "Everything is dark.\n The blackness seems to be draining your torch's light since it can just light up little more than your feet.\n The only viable exit (apart from the infinite darkness) is a door to the NORTH.\n");
 
-	exit[SectoSur].CreateLinks(Secret, "south", Surgery, "north");
-	exit[SurtoUpA].CreateLinks(Surgery, "south", UpAngel, "north");
-	exit[UpAtoStu].CreateLinks(UpAngel, "west", Studio, "east");
-	exit[UpAtoDwA].CreateLinks(UpAngel, "down", DwAngel, "up");
-	exit[DwAtoSto].CreateLinks(DwAngel, "west", Stone, "east");
-	exit[DwAtoWai].CreateLinks(DwAngel, "south", Waiting, "north");
-	exit[DwAtoLib].CreateLinks(DwAngel, "east", Library, "west");
-	exit[StotoMir].CreateLinks(Stone, "south", Mirror, "north");
-	exit[WaitoRec].CreateLinks(Waiting, "south",Reception, "north");
-	exit[LibtoDar].CreateLinks(Library, "south", Dark, "north");
+	exit[SectoSur].CreateLinks(Secret, "south", Surgery, "north", true);
+	exit[SurtoUpA].CreateLinks(Surgery, "south", UpAngel, "north", false);
+	exit[UpAtoStu].CreateLinks(UpAngel, "west", Studio, "east", false);
+	exit[UpAtoDwA].CreateLinks(UpAngel, "down", DwAngel, "up", true);
+	exit[DwAtoSto].CreateLinks(DwAngel, "west", Stone, "east", true);
+	exit[DwAtoWai].CreateLinks(DwAngel, "south", Waiting, "north", true);
+	exit[DwAtoLib].CreateLinks(DwAngel, "east", Library, "west", true);
+	exit[StotoMir].CreateLinks(Stone, "south", Mirror, "north", true);
+	exit[WaitoRec].CreateLinks(Waiting, "south",Reception, "north", true);
+	exit[LibtoDar].CreateLinks(Library, "south", Dark, "north", true);
 
 }
 
