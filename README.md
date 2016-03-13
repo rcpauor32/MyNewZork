@@ -16,4 +16,4 @@ In this prototype you can:
 	- 'quit' or 'q'
 	  
 Author --> Pau Olivé Rubio.  
-Github Repository --> https://github.com/rcpauor32/MyNewZork/
+Github Repository --> https://github.com/rcpauor32/Zork-The-Dark-Sleep
