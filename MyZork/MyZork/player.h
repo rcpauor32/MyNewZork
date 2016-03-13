@@ -3,7 +3,7 @@
 
 class Players {
 public:
-	int current_room = Surgery;
+	int current_room;
 
 	void Init_player(int starting_room){
 		current_room = starting_room;
@@ -11,6 +11,6 @@ public:
 
 };
 
-void Go(int &current_room, char* player_direction, Links* exit);
+
 
 #endif

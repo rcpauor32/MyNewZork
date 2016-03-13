@@ -14,13 +14,13 @@ public:
 	Rooms* room = new Rooms[NUM_ROOM];
 	Links* exit = new Links[NUM_EXITS];
 	Players player;
-
-	~World();
 };
 
-void CreateWorld(Rooms room[NUM_ROOM], Links exit[NUM_EXITS], Players player);
+void CreateWorld(Rooms room[NUM_ROOM], Links exit[NUM_EXITS]);
 
-bool Play(Links exit[NUM_EXITS], Players player);
+bool Play(World (&world));
 void Look(Rooms* room, Players player);
+void Go(World (&world), char* direction);
+void OpenClose(World (&world), char* action, char* direction);
 
 #endif

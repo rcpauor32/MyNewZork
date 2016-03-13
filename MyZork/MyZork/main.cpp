@@ -4,15 +4,23 @@
 
 int main() {
 
+	bool EXIT = 1;
+
 	World My_World;
 
-	CreateWorld(My_World.room, My_World.exit, My_World.player);
+	My_World.player.current_room = Surgery;
+	CreateWorld(My_World.room, My_World.exit);
 
 	Look(My_World.room, My_World.player);
 
-	while (Play(My_World.exit, My_World.player));
+	while (EXIT){
+		EXIT = Play(My_World);
+	}
 
 	printf("\nThanks for Playing :D");
+
+	delete My_World.room;
+	delete My_World.exit;
 
 	getchar();
 	return 0;
