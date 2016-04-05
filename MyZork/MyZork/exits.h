@@ -1,7 +1,9 @@
 #ifndef _EXITS_H_
 #define _EXITS_H_
 
-class Links {
+#include "entities.h"
+
+class Links : public Entity {
 public:
 	int previous_room;
 	int next_room;

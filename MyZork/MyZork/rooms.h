@@ -1,7 +1,7 @@
 #ifndef	_ROOMS_H_
 #define	_ROOMS_H_
 
-class Rooms {
+class Rooms : public Entity {
 public:
 	char* name;
 	char* description;

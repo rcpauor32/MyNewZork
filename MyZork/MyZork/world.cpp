@@ -4,6 +4,9 @@
 #include <string.h>
 #include <stdio.h>
 
+World::~World() {
+}
+
 void CreateWorld(Rooms room[NUM_ROOM], Links exit[NUM_EXITS]) {
 	room[Secret].CreateRooms("Secret Room", "This is a dark room only lighted up by the fading light of your torch.\n After a moment you realize there is a man-like hooded figure standing in a corner.\n He doesn't seem to have noticed you yet.\n The only visible door is to the SOUTH.\n");
 	room[Surgery].CreateRooms("Surgery Room", "You just see a surgery bed in the center of the room.\n All the walls of this octogonal room seem really old, dark and burned.\n There's a big CLOSED door on the SOUTH wall. \n Also, you see a crack on the NORTH wall big enough to fit in.\n");

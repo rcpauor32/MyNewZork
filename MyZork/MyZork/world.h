@@ -8,9 +8,13 @@
 
 class Rooms;
 class Exits;
+class Player;
+class Entity;
 
 class World {
 public:
+	virtual ~World();
+
 	Rooms* room = new Rooms[NUM_ROOM];
 	Links* exit = new Links[NUM_EXITS];
 	Players player;

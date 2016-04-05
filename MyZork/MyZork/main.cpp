@@ -24,9 +24,6 @@ int main() {
 
 	printf("\nThanks for Playing :D");
 
-	delete My_World.room;
-	delete My_World.exit;
-
 	getchar();
 	return 0;
 }
