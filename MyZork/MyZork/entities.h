@@ -1,6 +1,7 @@
 #ifndef __ENITIES_H__
 #define __ENITIES_H__
 
+#include "my_string.h"
 enum entity_type {
 	ROOM,
 	EXIT,
